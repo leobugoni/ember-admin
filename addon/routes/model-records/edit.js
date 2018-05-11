@@ -14,7 +14,7 @@ export default Route.extend(WriteMixin, {
   templateAdminPath: 'admin/edit',
   actions: {
     destroyRecord(callback) {
-      let canDestroy = window.confirm('Are you sure you want to destroy this record?');
+      let canDestroy = window.confirm('Tem certeza que deseja destruir esse registro?');
       let promise;
 
       if (canDestroy) {

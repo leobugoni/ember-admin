@@ -32,6 +32,9 @@ export default Mixin.create(EmberDataRouteMixin, {
     }
   },
   willTransitionConfirm() {
-    return window.confirm('You have unsaved changes. Are you sure you want to continue?');
+    if (['model-records.index', 'model-records.show'].includes(get(this, 'router.currentRouteName'))) {
+      return true;
+    }
+    return window.confirm('Você tem alterações não salvas. Tem certeza que deseja continuar?');
   }
 });
