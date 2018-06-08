@@ -19,9 +19,10 @@ export default Mixin.create(RecordTypeMixin, {
   columns: computed('model', function() {
     let adapter = getOwner(this).lookup('data-adapter:main');
     let recordType = this.get('recordType');
-    let type = adapter.getModelTypes().findBy('name', recordType);
+    let modelName = recordType.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    console.debug(`Transformed ${recordType} to ${modelName}`);
+    let type = adapter.getModelTypes().findBy('name', modelName);
     let { klass } = type;
-
     let keys = emberArray(['id']);
 
     klass.eachAttribute(function(key) {

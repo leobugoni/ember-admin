@@ -10,7 +10,9 @@ const {
 export default Mixin.create({
   'model-record': computed('recordType', function() {
     let adapter = getOwner(this).lookup('data-adapter:main');
-    let type    = adapter.getModelTypes().findBy('name', get(this, 'recordType'));
+    let modelName = get(this, 'recordType').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    console.debug(`Transformed ${get(this, 'recordType')} to ${modelName}`);
+    let type = adapter.getModelTypes().findBy('name', modelName);
     return adapter.wrapModelType(type.klass, get(this, 'recordType'));
   })
 });
