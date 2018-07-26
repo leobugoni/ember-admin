@@ -46,7 +46,7 @@
   "dependencies": {
     "ember-async-button": "^1.0.0",
     "ember-cli-htmlbars": "^1.0.3",
-    "ember-data-route": "0.2.0",
+    "ember-data-route": "leobugoni/ember-data-route#master",
     "ember-cli-babel": "^5.1.6"
   },
   "ember-addon": {
